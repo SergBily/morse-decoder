@@ -40,24 +40,18 @@ const MORSE_TABLE = {
 function decode(expr) {
 	let arr = [];
 
-	for (let i = 0, k = 10; i < expr.length; i += 10, k += 10) {
+	for (let i = 0, k = 2; i < expr.length; i += 2, k += 2) {
 		arr.push(expr.slice(i, k))
 	}
+
 	let arr2 = [];
-	arr.forEach(el => {
-		let step = 2;
-		for (let i = 0, k = step; i < el.length; i += step, k += step) {
-			arr2.push(el.slice(i, k))
-		}
-	})
 	
-	let arr3 = [];
-	for (let i = 0, k = 5; i < arr2.length; i += 5, k += 5) {
-		arr3.push(arr2.slice(i, k))
+	for (let i = 0, k = 5; i < arr.length; i += 5, k += 5) {
+		arr2.push(arr.slice(i, k))
 	}
 	
 
-	let morse = arr3.map(el => {
+	let morse = arr2.map(el => {
 		if (el.includes('**')) {
 			return [' '];
 		} else {
